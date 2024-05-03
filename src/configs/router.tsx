@@ -1,11 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import AuthLayout from "../layouts/AuthLayout";
+import MainLayout from "../layouts/MainLayout";
 import Login from "../pages/Authentication/Login";
 import Register from "../pages/Authentication/Register";
 import Home from "../pages/Home";
 import Verify from "../pages/Authentication/Verify";
 import ForgetPassword from "../pages/Authentication/ForgetPassword";
 import ChangePassword from "../pages/Authentication/ChangePassword";
+import CompleteProfile from "../pages/Profile/CompleteProfile";
+
 
 const router = createBrowserRouter([
     {
@@ -23,7 +26,7 @@ const router = createBrowserRouter([
                 errorElement: <Register />,
             },
             {
-                path: "verify",
+                path: "verify/:phoneNumber",
                 element: <Verify />,
                 errorElement: <Verify />,
             },
@@ -40,9 +43,20 @@ const router = createBrowserRouter([
         ],
     },
     {
-        element: <Home />,
-        path: '/',
-    }
+        element: <MainLayout />,
+        children: [
+            {
+                path: "/",
+                element: <Home />,
+                errorElement: <Home />,
+            },
+            {
+                path: "complete-profile",
+                element: <CompleteProfile />,
+                errorElement: <CompleteProfile />,
+            },
+        ],
+    },
 ])
 
 export default router
