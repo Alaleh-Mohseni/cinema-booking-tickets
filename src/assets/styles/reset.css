@@ -136,10 +136,10 @@ a {
 
 ::-webkit-scrollbar-track {
   border-radius: 1rem;
-  background-color: #ededed;
+  background-color: #111827;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--color-primary);
+  background-color: gray;
   border-radius: 1rem;
 }

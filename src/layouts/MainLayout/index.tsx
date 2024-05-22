@@ -5,8 +5,8 @@ import Header from "../../components/Header";
 function MainLayout() {
   return (
     <AuthProvider>
-        <Header />
-        <Outlet />
+      <Header />
+      <Outlet />
     </AuthProvider>
   )
 }

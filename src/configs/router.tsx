@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import AuthLayout from "../layouts/AuthLayout";
 import MainLayout from "../layouts/MainLayout";
+import DashboardLayout from "../layouts/DashboardLayout";
 import Login from "../pages/Authentication/Login";
 import Register from "../pages/Authentication/Register";
 import Home from "../pages/Home";
@@ -54,19 +55,26 @@ const router = createBrowserRouter([
                 errorElement: <Home />,
             },
             {
-                path: "complete-profile",
-                element: <CompleteProfile />,
-                errorElement: <CompleteProfile />,
-            },
-            {
-                path: "set-password",
-                element: <SetPassword />,
-                errorElement: <SetPassword />,
-            },
-            {
-                path: "change-password",
-                element: <ChangePassword />,
-                errorElement: <ChangePassword />,
+                path: "dashboard",
+                element: <DashboardLayout />,
+                errorElement: <DashboardLayout />,
+                children: [
+                    {
+                        path: "complete-profile",
+                        element: <CompleteProfile />,
+                        errorElement: <CompleteProfile />,
+                    },
+                    {
+                        path: "set-password",
+                        element: <SetPassword />,
+                        errorElement: <SetPassword />,
+                    },
+                    {
+                        path: "change-password",
+                        element: <ChangePassword />,
+                        errorElement: <ChangePassword />,
+                    },        
+                ]
             },
         ],
     },
