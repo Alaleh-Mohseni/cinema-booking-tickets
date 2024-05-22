@@ -1,13 +1,17 @@
+import { useContext } from 'react';
+import { AuthContext } from '../../../contexts/authContext';
 import { HiOutlineDevicePhoneMobile } from "react-icons/hi2";
 
 function ForgetPassword() {
+    const { handleSubmitForgetPassword, register, errors } = useContext(AuthContext)
+
     return (
         <>
             {/* <Toaster position="top-right" reverseOrder={false} /> */}
             <h1 className="text-xl text-center font-semibold leading-tight tracking-tight md:text-2xl">
                 فراموشی رمز عبور
             </h1>
-            <form className="space-y-4 md:space-y-6">
+            <form className="space-y-4 md:space-y-6" onSubmit={handleSubmitForgetPassword}>
                 <div className="flex gap-5 justify-between py-5 pl-16 pr-6 mt-7 w-full bg-gray-900 rounded-3xl text-slate-500">
                     <div className="flex gap-3 items-center">
                         <HiOutlineDevicePhoneMobile className="shrink-0 self-stretch aspect-[0.96]" size="24" />
@@ -17,9 +21,16 @@ function ForgetPassword() {
                         </label>
                         <input
                             type="text"
-                            id="phone"
+                            id="phoneNumber"
                             placeholder="شماره موبایل"
                             className="self-stretch my-auto bg-transparent outline-none"
+                            {...register('phoneNumber', {
+                                required: true,
+                                pattern: {
+                                    value: /^[0-9]{11}$/,
+                                    message: 'شماره موبایل معتبر نیست'
+                                }
+                            })}
                         />
                     </div>
                 </div>

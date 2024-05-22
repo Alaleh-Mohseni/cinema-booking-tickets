@@ -29,3 +29,15 @@ export function lsGet(key: string, isObject = false) {
         return localStorage.getItem(key);
     }
 }
+<<<<<<< HEAD
+
+
+// export const lsGet = (key: string) => {
+//     return JSON.parse(localStorage.getItem(key) || '');
+// }
+
+// export const lsSet = (key: string, data: object | string) => {
+//     localStorage.setItem(key, JSON.stringify(data));
+// }
+=======
+>>>>>>> 6368cb98c208b790fa372ae4458458c246af3f6a
