@@ -43,11 +43,7 @@ export function verify(
 export function loginPassword(
   phone_number: string,
   data: AxiosRequestConfig = {},
-<<<<<<< HEAD
   params: AxiosRequestConfig = {},
-=======
-  params: AxiosRequestConfig = {}
->>>>>>> 6368cb98c208b790fa372ae4458458c246af3f6a
 ) {
   return httpClient({
     url: `/api/v1/accounts/auth/login/password/${phone_number}/`,
@@ -58,95 +54,67 @@ export function loginPassword(
 }
 
 
-<<<<<<< HEAD
 export function changePassword(
   data: AxiosRequestConfig = {}, 
   // params: AxiosRequestConfig = {},
   accessToken: string
 ) {
-=======
-export function changePassword(data: AxiosRequestConfig = {}, params: AxiosRequestConfig = {}) {
->>>>>>> 6368cb98c208b790fa372ae4458458c246af3f6a
   return (
     httpClient({
       url: `/api/v1/accounts/change_password/`,
       method: 'POST',
       data,
-<<<<<<< HEAD
       // params,
       headers: {
         Authorization: `Bearer ${accessToken}`
       }
-=======
-      params,
->>>>>>> 6368cb98c208b790fa372ae4458458c246af3f6a
     }) ?? null
   );
 }
 
 
-<<<<<<< HEAD
 export function profile(
   data: AxiosRequestConfig = {}, 
   // params: AxiosRequestConfig = {},
   accessToken: string
 ) {
-=======
-export function profile(data: AxiosRequestConfig = {}, params: AxiosRequestConfig = {}) {
->>>>>>> 6368cb98c208b790fa372ae4458458c246af3f6a
   return (
     httpClient({
       url: `/api/v1/accounts/complete_profile/`,
       method: 'POST',
       data,
-<<<<<<< HEAD
       // params,
       headers: {
         Authorization: `Bearer ${accessToken}`
       }
-=======
-      params,
->>>>>>> 6368cb98c208b790fa372ae4458458c246af3f6a
     }) ?? null
   );
 }
 
 
-<<<<<<< HEAD
 export function setPassword(
   data: AxiosRequestConfig = {}, 
   // params: AxiosRequestConfig = {}, 
   accessToken: string
 ) {
-=======
-export function setPassword(data: AxiosRequestConfig = {}, params: AxiosRequestConfig = {}) {
->>>>>>> 6368cb98c208b790fa372ae4458458c246af3f6a
   return (
     httpClient({
       url: `/api/v1/accounts/set_password/`,
       method: 'POST',
       data,
-<<<<<<< HEAD
       // params,
       headers: {
         Authorization: `Bearer ${accessToken}`
       }
-=======
-      params,
->>>>>>> 6368cb98c208b790fa372ae4458458c246af3f6a
     }) ?? null
   );
 }
 
 
-<<<<<<< HEAD
 export function forgetPassword(
   data: AxiosRequestConfig = {}, 
   params: AxiosRequestConfig = {},
 ) {
-=======
-export function forgetPassword(data: AxiosRequestConfig = {}, params: AxiosRequestConfig = {}) {
->>>>>>> 6368cb98c208b790fa372ae4458458c246af3f6a
   return (
     httpClient({
       url: `/api/v1/accounts/auth/forget_password/`,

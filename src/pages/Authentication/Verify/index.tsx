@@ -1,23 +1,16 @@
 import { MdOutlineVerifiedUser } from "react-icons/md";
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
 import { useContext, useState, useEffect } from 'react';
 import { AuthContext } from "../../../contexts/authContext";
 import { HiArrowUturnRight } from "react-icons/hi2";
 import { FaAngleLeft } from "react-icons/fa6";
 import { TbLogin2 } from "react-icons/tb";
-=======
-import { useContext } from 'react';
-import { AuthContext } from "../../../contexts/authContext";
-import { HiArrowUturnRight } from "react-icons/hi2";
->>>>>>> 6368cb98c208b790fa372ae4458458c246af3f6a
 import { Toaster } from 'react-hot-toast';
 
 function Verify() {
     const { verificationCode, phoneNumber, url, register, handleSubmitVerify } = useContext(AuthContext)
     const urls = url ? 'register' : 'login'
 
-<<<<<<< HEAD
     const [secondsLeft, setSecondsLeft] = useState(80);
     const [expired, setExpired] = useState(false);
 
@@ -39,26 +32,17 @@ function Verify() {
     const seconds = secondsLeft % 60;
     const formattedTime = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 
-=======
->>>>>>> 6368cb98c208b790fa372ae4458458c246af3f6a
     return (
         <>
             <Toaster position="top-left" reverseOrder={false} />
             <h1 className="text-xl text-center font-semibold leading-tight tracking-tight md:text-2xl">
                 ورود با رمز یکبارمصرف
             </h1>
-<<<<<<< HEAD
             <div className="flex flex-col justify-center items-center gap-3 text-slate-500 py-1">
                 <p>کد ارسال شده به شماره موبایل زیر را وارد کنید:</p>
                 <p>{phoneNumber}</p>
                 <p>کد: {verificationCode}</p>
                 <p>{expired ? 'لطفا مجدد اقدام کنید' : `${formattedTime}`}</p>
-=======
-            <div className="flex flex-col justify-center items-center text-slate-500 py-1">
-                <p>کد ارسال شده به شماره موبایل زیر را وارد کنید:</p>
-                <p className="py-2">{phoneNumber}</p>
-                <p>کد: {verificationCode}</p>
->>>>>>> 6368cb98c208b790fa372ae4458458c246af3f6a
             </div>
             <form onSubmit={handleSubmitVerify} className="space-y-4 md:space-y-6">
                 <div className="flex gap-5 justify-between py-5 pl-16 pr-6 mt-7 w-full bg-gray-900 rounded-3xl text-slate-500">
@@ -83,7 +67,6 @@ function Verify() {
                 >
                     تایید کد ارسالی
                 </button>
-<<<<<<< HEAD
                 <div className="flex justify-between items-center flex-row-reverse text-slate-500 px-3">
                     <div className="flex items-center">
                         <Link to={`/${urls}`}>مرحله قبلی</Link>
@@ -100,11 +83,6 @@ function Verify() {
                         :
                         null
                     }
-=======
-                <div className="flex justify-end items-center text-slate-500 px-3">
-                    <Link to={`/${urls}`}>مرحله قبلی</Link>
-                    <HiArrowUturnRight className="pr-1" size="20" />
->>>>>>> 6368cb98c208b790fa372ae4458458c246af3f6a
                 </div>
             </form>
         </>
