@@ -1,7 +1,11 @@
 import { httpClient } from './http';
 import type { AxiosRequestConfig } from 'axios';
 
-export function signUp(data: AxiosRequestConfig = {}, params: AxiosRequestConfig = {}) {
+
+export function signUp(
+  data: AxiosRequestConfig = {},
+  params: AxiosRequestConfig = {}
+) {
   return (
     httpClient({
       url: `/api/v1/accounts/auth/register/`,
@@ -13,7 +17,10 @@ export function signUp(data: AxiosRequestConfig = {}, params: AxiosRequestConfig
 }
 
 
-export function login(data: AxiosRequestConfig = {}, params: AxiosRequestConfig = {}) {
+export function login(
+  data: AxiosRequestConfig = {},
+  params: AxiosRequestConfig = {}
+) {
   return (
     httpClient({
       url: `/api/v1/accounts/auth/login/`,
@@ -55,8 +62,7 @@ export function loginPassword(
 
 
 export function changePassword(
-  data: AxiosRequestConfig = {}, 
-  // params: AxiosRequestConfig = {},
+  data: AxiosRequestConfig = {},
   accessToken: string
 ) {
   return (
@@ -64,7 +70,6 @@ export function changePassword(
       url: `/api/v1/accounts/change_password/`,
       method: 'POST',
       data,
-      // params,
       headers: {
         Authorization: `Bearer ${accessToken}`
       }
@@ -74,8 +79,7 @@ export function changePassword(
 
 
 export function profile(
-  data: AxiosRequestConfig = {}, 
-  // params: AxiosRequestConfig = {},
+  data: AxiosRequestConfig = {},
   accessToken: string
 ) {
   return (
@@ -83,7 +87,6 @@ export function profile(
       url: `/api/v1/accounts/complete_profile/`,
       method: 'POST',
       data,
-      // params,
       headers: {
         Authorization: `Bearer ${accessToken}`
       }
@@ -93,8 +96,7 @@ export function profile(
 
 
 export function setPassword(
-  data: AxiosRequestConfig = {}, 
-  // params: AxiosRequestConfig = {}, 
+  data: AxiosRequestConfig = {},
   accessToken: string
 ) {
   return (
@@ -102,7 +104,6 @@ export function setPassword(
       url: `/api/v1/accounts/set_password/`,
       method: 'POST',
       data,
-      // params,
       headers: {
         Authorization: `Bearer ${accessToken}`
       }
@@ -112,7 +113,7 @@ export function setPassword(
 
 
 export function forgetPassword(
-  data: AxiosRequestConfig = {}, 
+  data: AxiosRequestConfig = {},
   params: AxiosRequestConfig = {},
 ) {
   return (

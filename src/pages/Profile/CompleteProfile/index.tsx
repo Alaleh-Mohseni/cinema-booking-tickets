@@ -1,50 +1,43 @@
-import { useContext } from 'react';
-import { AuthContext } from '../../../contexts/authContext';
 import { Link } from 'react-router-dom';
 import { RiUserSmileLine, RiUser6Line, RiLockPasswordLine } from "react-icons/ri";
 import { FaAngleLeft } from "react-icons/fa6";
 import { HiUser } from "react-icons/hi";
+import { useCompleteProfile } from '../../../hooks/useCompleteProfile';
+import { useForm } from 'react-hook-form';
+import { Toaster } from 'react-hot-toast';
+
 
 function CompleteProfile() {
-  const { handleSubmitProfile, register, userPhoto, photo } = useContext(AuthContext)
+  const { handleSubmitProfile, photo, userPhoto } = useCompleteProfile()
+  const { register, formState: { errors } } = useForm({ mode: 'onTouched' });
 
   return (
     <main className="w-full">
       <section className="pt-7">
+        <Toaster position="top-left" reverseOrder={false} />
         <div className="flex flex-col items-center justify-center px-6 mx-auto lg:py-0">
           <div className="w-full bg-gray-900 text-white border border-gray-700 rounded-2xl shadow md:mt-0 sm:max-w-md xl:p-0 relative">
             <div className="py-6 px-12 space-y-4 md:space-y-6 sm:py-8">
               <form className="space-y-4 md:space-y-6" onSubmit={handleSubmitProfile}>
-                <div className="py-2">
+                <div className="py-2 flex justify-center items-center">
                   {photo ?
-                    <img src={userPhoto} className="w-40 h-40 rounded-lg absolute" alt="chosen" />
+                    <img
+                      src={userPhoto}
+                      className="w-40 h-40 rounded-full"
+                      alt="user photo"
+                    />
                     :
-                    <div className="w-40 h-40 bg-orange-100 mx-auto rounded-full shadow-2xl flex items-center justify-center text-[#ff8036]">
+                    <div className="w-40 h-40 bg-orange-100 mx-auto rounded-full shadow-2xl text-[#ff8036]">
                       <HiUser className='h-20 w-20' />
                     </div>
                   }
-                  {/* {userPhoto ? (
-                    <img src={userPhoto} className="w-40 h-40 rounded-lg absolute" alt="chosen" />
-                  ) : (
-                    <div className="flex flex-col absolute items-center">
-                      <p className="text-gray-500">انتخاب تصویر پروفایل</p>
-                    </div>
-                  )} */}
-                  {/* {avatarString &&
-                    <img
-                      className="w-28 h-28 mx-auto rounded-full"
-                      src={avatarString}
-                      alt="Profile"
-                    />
-                  } */}
                   <input
                     type="file"
-                    className="w-full h-full cursor-pointer mb-0 opacity-0"
+                    className="w-full h-full cursor-pointer mb-0 opacity-0 absolute"
                     id="ّphoto"
                     {...register('photo', { required: true })}
                   />
                 </div>
-
                 <div className="flex gap-5 justify-between py-5 pl-16 pr-6 mt-7 w-full bg-gray-800 rounded-3xl text-slate-500">
                   <div className="flex gap-3 items-center">
                     <RiUserSmileLine className="shrink-0 self-stretch aspect-[0.96]" size="24" />

@@ -1,10 +1,11 @@
-import { useContext } from 'react';
-import { AuthContext } from '../../../contexts/authContext';
 import { RiLockPasswordLine } from "react-icons/ri";
 import { Toaster } from 'react-hot-toast';
+import { useChangePassword } from "../../../hooks/useChangePassword";
+import { useForm } from 'react-hook-form';
 
 function ChangePassword() {
-    const { handleSubmitChangePassword, register, watch } = useContext(AuthContext)
+    const { register, watch, formState: { errors } } = useForm({ mode: 'onTouched' });
+    const { handleSubmitChangePassword } = useChangePassword()
 
     return (
         <main className="w-full">

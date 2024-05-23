@@ -1,4 +1,10 @@
 export const API = '/api/v1';
 export const ACCOUNTS = `${API}/accounts`;
 export const AUTH = `${ACCOUNTS}/auth`;
-export const REGISTER = `${AUTH}/register`
+export const REGISTER = `${AUTH}/register/`;
+export const LOGIN = `${AUTH}/login/`;
+export const FORGET_PASSWORD = `${AUTH}/forget-password/`;
+export const LOGIN_PASSWORD = `${LOGIN}password/`;
+export const CHANGE_PASSWORD = `${ACCOUNTS}/change-password/`;
+export const COMPLETE_PROFILE = `${ACCOUNTS}/complete-profile/`;
+export const SET_PASSWORD = `${ACCOUNTS}/set-password/`;

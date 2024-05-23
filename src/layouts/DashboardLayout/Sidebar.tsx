@@ -51,9 +51,8 @@ function Sidebar() {
         <div className='bg-gray-900 text-white flex flex-col border-t-2 border-gray-300 w-1/5 h-screen relative'>
             <div className='mt-9 flex flex-col space-y-8'>
                 {navLinks.map((item, index) => (
-                    <Link to={item?.path}>
+                    <Link to={item?.path} key={item.title}>
                         <div
-                            key={index}
                             className={`flex items-center px-3 py-1 rounded gap-2
                             ${(activeNavIndex === index
                                     ? 'text-[#ff8036] font-semibold'
@@ -61,7 +60,7 @@ function Sidebar() {
                                 )}`}
                             onClick={() => setActiveNavIndex(index)}
                         >
-                            <item.icon size='24' />
+                            <item.icon size='24'/>
                             <span className='text-lg'>
                                 {item?.title}
                             </span>

@@ -1,13 +1,14 @@
-import { useContext } from 'react';
-import { AuthContext } from '../../../contexts/authContext';
 import { Link } from 'react-router-dom';
 import { RiLockPasswordLine } from "react-icons/ri";
 import { FaAngleLeft } from "react-icons/fa6";
 import { Toaster } from 'react-hot-toast';
+import { useForm } from 'react-hook-form';
+import { useSetPassword } from '../../../hooks/useSetPassword';
 
 
 function SetPassword() {
-    const { handleSubmitSetPassword, register, watch } = useContext(AuthContext)
+    const { register, watch, formState: { errors } } = useForm({ mode: 'onTouched' });
+    const { handleSubmitSetPassword } = useSetPassword()
 
     return (
         <main className="w-full">

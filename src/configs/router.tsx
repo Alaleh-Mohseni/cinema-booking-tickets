@@ -11,13 +11,11 @@ import LoginPassword from "../pages/Authentication/LoginPassword";
 import CompleteProfile from "../pages/Profile/CompleteProfile";
 import SetPassword from "../pages/Profile/SetPassword";
 import ChangePassword from "../pages/Profile/ChangePassword";
-// import CompleteProfile from "../pages/Profile/CompleteProfile/profile";
-// import UpdateProfileForm from "../pages/Profile/CompleteProfile/complete";
+
 
 const router = createBrowserRouter([
     {
         element: <AuthLayout/>,
-        // path: "/",
         children: [
             {
                 path: "/login",
