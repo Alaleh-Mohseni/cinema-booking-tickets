@@ -2,6 +2,7 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import { Toaster } from 'react-hot-toast';
 import { useChangePassword } from "../../../hooks/useChangePassword";
 import { useForm } from 'react-hook-form';
+import Button from "../../../components/Button";
 
 function ChangePassword() {
     const { register, watch, formState: { errors } } = useForm({ mode: 'onTouched' });
@@ -87,12 +88,7 @@ function ChangePassword() {
                                         />
                                     </div>
                                 </div>
-                                <button
-                                    type="submit"
-                                    className="w-full text-white bg-[#ff8036] hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-200 font-medium gap-5 rounded-3xl mt-7 px-16 py-3.5 text-xl text-center"
-                                >
-                                    ذخیره تغییرات
-                                </button>
+                                <Button text={'ذخیره تغییرات'} />
                             </form>
                         </div>
                     </div>

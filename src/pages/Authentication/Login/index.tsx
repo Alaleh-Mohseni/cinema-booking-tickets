@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../../contexts/authContext';
 import { HiOutlineDevicePhoneMobile } from "react-icons/hi2";
 import { Toaster } from 'react-hot-toast';
-
+import Button from '../../../components/Button';
 
 function Login() {
     const { handleSubmitLogin, register, errors } = useContext(AuthContext)
@@ -37,12 +37,7 @@ function Login() {
                     </div>
                 </div>
                 {errors?.phoneNumber && <p className="text-red-500 text-sm">{errors?.phoneNumber.message}</p>}
-                <button
-                    type="submit"
-                    className="w-full text-white bg-[#ff8036] hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-200 font-medium gap-5 rounded-3xl mt-7 px-16 py-3.5 text-xl text-center"
-                >
-                    ادامه
-                </button>
+                <Button text={'ادامه'} />
             </form>
         </>
     )

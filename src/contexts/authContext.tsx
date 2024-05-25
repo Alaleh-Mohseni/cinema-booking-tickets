@@ -15,7 +15,7 @@ export function AuthProvider({ children }) {
     const [phoneNumber, setPhoneNumber] = useState('')
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [url, setUrl] = useState()
-  
+
 
     const handleSubmitRegister = (e: any) => {
         e.preventDefault();
@@ -71,35 +71,35 @@ export function AuthProvider({ children }) {
         e.preventDefault();
         const otp = e.target.otp.value;
         const token = verificationCode ? otp : null
-        const urls = url ? 'register' : 'login';
+        let urls = url === 'register' ? 'register' : url === 'forget-password' ? 'forget-password' : 'login';
+
 
         verify(urls, phoneNumber, { token: token })
             .then((data) => {
-                if(urls === 'login') {
+                if (urls === 'login') {
                     lsSet('access_token', data.data.data.tokens.access_token);
-                    lsSet('refresh_token', data.data.data.tokens.refresh_token);    
+                    lsSet('refresh_token', data.data.data.tokens.refresh_token);
                 }
 
-                if(urls === 'register') {
+                if (urls === 'register') {
                     lsSet('success', data.data.type);
                 }
 
                 lsSet('user', data, true);
                 console.log(data)
+
                 setVerificationCode(token)
                 toast.success(data.data.message)
                 return navigate('/');
             })
             .catch((err) => {
                 console.error(err)
-                if(urls === 'login') {
-                    if (err.response.status === 404) {
-                        toast.error(err.response.data.message);
-                    }
-    
-                    if (err.response.status === 403) {
-                        toast.error(err.response.data.detail);
-                    }    
+                if (err.response.status === 404) {
+                    toast.error(err.response.data.message);
+                }
+
+                if (err.response.status === 403) {
+                    toast.error(err.response.data.detail);
                 }
             });
     };
@@ -132,9 +132,13 @@ export function AuthProvider({ children }) {
             .then((data) => {
                 lsSet('user', data, true);
                 console.log('forgetPass successful:', data);
-
+                const verifyCode = data?.data.token.split(' ').slice(9).join('')
                 const phone = data.data.data.phone_number
+                const urlForgetPassword = data.config.url?.split('/').slice(5).join('')
+
                 setPhoneNumber(phone)
+                setVerificationCode(verifyCode)
+                setUrl(urlForgetPassword)
                 return navigate(`/verify/${data.data.data.phone_number}`);
             })
             .catch((err) => {

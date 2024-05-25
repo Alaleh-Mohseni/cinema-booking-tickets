@@ -5,7 +5,7 @@ import { HiUser } from "react-icons/hi";
 import { useCompleteProfile } from '../../../hooks/useCompleteProfile';
 import { useForm } from 'react-hook-form';
 import { Toaster } from 'react-hot-toast';
-
+import Button from '../../../components/Button';
 
 function CompleteProfile() {
   const { handleSubmitProfile, photo, userPhoto } = useCompleteProfile()
@@ -71,12 +71,7 @@ function CompleteProfile() {
                     />
                   </div>
                 </div>
-                <button
-                  type="submit"
-                  className="w-full text-white bg-[#ff8036] hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-200 font-medium gap-5 rounded-3xl mt-7 px-16 py-3.5 text-xl text-center"
-                >
-                  ذخیره تغییرات
-                </button>
+                <Button text={'ذخیره تغییرات'} />
               </form>
               <div className='flex justify-start text-slate-500 pt-2'>
                 <Link to='/dashboard/set-password' className='flex justify-center items-center gap-2'>

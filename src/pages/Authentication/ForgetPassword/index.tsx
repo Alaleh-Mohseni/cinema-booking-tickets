@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { AuthContext } from '../../../contexts/authContext';
 import { HiOutlineDevicePhoneMobile } from "react-icons/hi2";
+import Button from '../../../components/Button';
 
 function ForgetPassword() {
     const { handleSubmitForgetPassword, register, errors } = useContext(AuthContext)
@@ -34,12 +35,7 @@ function ForgetPassword() {
                         />
                     </div>
                 </div>
-                <button
-                    type="submit"
-                    className="w-full text-white bg-[#ff8036] hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-200 font-medium gap-5 rounded-3xl mt-7 px-16 py-3.5 text-xl text-center"
-                >
-                    ادامه
-                </button>
+                <Button text={'ادامه'} />
             </form>
         </>
     )

@@ -6,10 +6,13 @@ import { HiArrowUturnRight } from "react-icons/hi2";
 import { FaAngleLeft } from "react-icons/fa6";
 import { TbLogin2 } from "react-icons/tb";
 import { Toaster } from 'react-hot-toast';
+import Button from "../../../components/Button";
+
 
 function Verify() {
     const { verificationCode, phoneNumber, url, register, handleSubmitVerify } = useContext(AuthContext)
-    const urls = url ? 'register' : 'login'
+    // const urls = url ? 'register' : 'login'
+    const urls = url === 'register' ? 'register' : url === 'forget-password' ? 'forget-password' : 'login' ;
 
     const [secondsLeft, setSecondsLeft] = useState(80);
     const [expired, setExpired] = useState(false);
@@ -61,12 +64,7 @@ function Verify() {
                         />
                     </div>
                 </div>
-                <button
-                    type="submit"
-                    className="w-full text-white bg-[#ff8036] hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-200 font-medium gap-5 rounded-3xl mt-7 px-16 py-3.5 text-xl text-center"
-                >
-                    تایید کد ارسالی
-                </button>
+                <Button text={'تایید کد ارسالی'} />
                 <div className="flex justify-between items-center flex-row-reverse text-slate-500 px-3">
                     <div className="flex items-center">
                         <Link to={`/${urls}`}>مرحله قبلی</Link>

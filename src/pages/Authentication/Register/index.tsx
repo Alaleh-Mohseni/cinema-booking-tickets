@@ -2,10 +2,10 @@ import { useContext } from 'react';
 import { AuthContext } from '../../../contexts/authContext';
 import { HiOutlineDevicePhoneMobile } from "react-icons/hi2";
 import { Toaster } from 'react-hot-toast';
-import Loader from '../../../components/Loader';
+import Button from '../../../components/Button';
 
 function Register() {
-    const { handleSubmitRegister, register, errors, isLoading } = useContext(AuthContext)
+    const { handleSubmitRegister, register, errors } = useContext(AuthContext)
 
     return (
         <>
@@ -37,12 +37,7 @@ function Register() {
                     </div>
                 </div>
                 {errors?.phoneNumber && <p className="text-red-500 text-sm">{errors?.phoneNumber.message}</p>}
-                <button
-                    type="submit"
-                    className="w-full text-white bg-[#ff8036] hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-200 font-medium gap-5 rounded-3xl mt-7 px-16 py-3.5 text-xl text-center"
-                >
-                    {isLoading ? <Loader/> : "ادامه"}
-                </button>
+                <Button text={'ادامه'} />
             </form>
         </>
     )

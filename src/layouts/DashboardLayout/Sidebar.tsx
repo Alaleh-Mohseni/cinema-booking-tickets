@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import { PiUserFocus } from "react-icons/pi";
-import { RiShieldUserLine } from "react-icons/ri";
+import { RiShieldUserLine, RiLockPasswordLine } from "react-icons/ri";
 import { TbLogout2 } from "react-icons/tb";
-import { IoWalletOutline } from "react-icons/io5";
-import { RiLockPasswordLine } from "react-icons/ri";
-import { IoTicketOutline } from "react-icons/io5";
+import { IoWalletOutline , IoTicketOutline } from "react-icons/io5";
 import { MdLockReset } from "react-icons/md";
 import { Link } from 'react-router-dom';
 
