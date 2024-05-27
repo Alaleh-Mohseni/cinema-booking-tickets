@@ -1,25 +1,31 @@
 import { setPassword } from '../services/auth';
 import { lsSet, lsGet } from '../utils/localStorage';
 import { toast } from "react-hot-toast";
+interface SetPasswordData {
+    password: string;
+    confirmPassword: string;
+}
 
 export function useSetPassword() {
-    const handleSubmitSetPassword = (e: any) => {
-        e.preventDefault();
-        const password = e.target.password.value;
-        const confirmPassword = e.target.confirmPassword.value;
+    const onSubmitSetPassword = async (data: SetPasswordData) => {
+        const { password, confirmPassword } = data;
         const userToken = lsGet('access_token');
 
-        setPassword({ password: password, re_password: confirmPassword }, userToken)
-            .then((data) => {
-                lsSet('user', data, true);
-                console.log('SetPass successful:', data);
-                toast.success(data.data.message);
-            })
-            .catch((err) => {
-                console.error('SetPass failed:', err);
-                toast.error(err.response.data.detail);
-            });
+        try {
+            const response = await setPassword(
+                {
+                    password,
+                    re_password: confirmPassword
+                }, userToken);
+            lsSet('user', response.data, true);
+            console.log('Set password successful:', response.data);
+            toast.success(response.data.message);
+        } catch (err) {
+            console.error('Set password failed:', err);
+            const errorMessage = err.response?.data?.detail || 'خطایی رخ داده است.';
+            toast.error(errorMessage);
+        }
     };
 
-    return { handleSubmitSetPassword }
+    return { onSubmitSetPassword };
 }

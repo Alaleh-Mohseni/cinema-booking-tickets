@@ -4,12 +4,18 @@ import { FaAngleLeft } from "react-icons/fa6";
 import { HiUser } from "react-icons/hi";
 import { useCompleteProfile } from '../../../hooks/useCompleteProfile';
 import { useForm } from 'react-hook-form';
+// import { yupResolver } from "@hookform/resolvers/yup";
+// import { completeProfileSchema } from '../../../schemas/schemas';
 import { Toaster } from 'react-hot-toast';
 import Button from '../../../components/Button';
+// import FormGroup from '../../../components/FormGroup';
+
 
 function CompleteProfile() {
   const { handleSubmitProfile, photo, userPhoto } = useCompleteProfile()
   const { register, formState: { errors } } = useForm({ mode: 'onTouched' });
+  // const resolver = yupResolver(completeProfileSchema)
+  // const { register, handleSubmit, formState: { errors }, control } = useForm({ resolver })
 
   return (
     <main className="w-full">
@@ -19,7 +25,7 @@ function CompleteProfile() {
           <div className="w-full bg-gray-900 text-white border border-gray-700 rounded-2xl shadow md:mt-0 sm:max-w-md xl:p-0 relative">
             <div className="py-6 px-12 space-y-4 md:space-y-6 sm:py-8">
               <form className="space-y-4 md:space-y-6" onSubmit={handleSubmitProfile}>
-                <div className="py-2 flex justify-center items-center">
+                <div className="py-2 flex justify-center items-center relative">
                   {photo ?
                     <img
                       src={userPhoto}
@@ -27,17 +33,41 @@ function CompleteProfile() {
                       alt="user photo"
                     />
                     :
-                    <div className="w-40 h-40 bg-orange-100 mx-auto rounded-full shadow-2xl text-[#ff8036]">
+                    <div className="w-40 h-40 bg-orange-100 mx-auto rounded-full shadow-2xl text-[#ff8036] flex justify-center items-center">
                       <HiUser className='h-20 w-20' />
                     </div>
                   }
                   <input
                     type="file"
-                    className="w-full h-full cursor-pointer mb-0 opacity-0 absolute"
-                    id="ّphoto"
+                    className="w-full h-full cursor-pointer mb-0 opacity-0 absolute top-0"
+                    id="photo"
                     {...register('photo', { required: true })}
                   />
                 </div>
+                {/* <FormGroup
+                  htmlFor={'firstName'}
+                  label={'First Name'}
+                  type={'text'}
+                  Icon={RiUserSmileLine}
+                  name={'firstName'}
+                  id={'firstName'}
+                  className={'bg-gray-800'}
+                  placeholder={'نام'}
+                  register={register}
+                  errors={errors.firstName}
+                />
+                <FormGroup
+                  htmlFor={'lastName'}
+                  label={'Last Name'}
+                  type={'text'}
+                  Icon={RiUser6Line}
+                  name={'lastName'}
+                  id={'lastName'}
+                  className={'bg-gray-800'}
+                  placeholder={'نام خانوادگی'}
+                  register={register}
+                  errors={errors.lastName}
+                /> */}
                 <div className="flex gap-5 justify-between py-5 pl-16 pr-6 mt-7 w-full bg-gray-800 rounded-3xl text-slate-500">
                   <div className="flex gap-3 items-center">
                     <RiUserSmileLine className="shrink-0 self-stretch aspect-[0.96]" size="24" />

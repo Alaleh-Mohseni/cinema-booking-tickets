@@ -1,11 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
-import { GrLocation } from "react-icons/gr";
 import Logo from "../../assets/images/Logo.png";
 import SearchForm from "../SearchForm";
 import { lsGet } from '../../utils/localStorage';
 import ProfileDropdown from './DropDown';
-import { Toaster } from 'react-hot-toast';
 
 function Header() {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -32,7 +30,6 @@ function Header() {
 
     return (
         <header>
-            <Toaster position="top-left" reverseOrder={false} />
             <nav className="border-gray-200 px-4 lg:px-6 py-6 bg-gray-900">
                 <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                     <Link to="/" className="flex items-center">
@@ -40,9 +37,6 @@ function Header() {
                         <span className="self-center text-2xl font-bold whitespace-nowrap text-white">سیـنما</span>
                     </Link>
                     <div className="flex items-center lg:order-2">
-                        <button>
-                            <GrLocation size="22" color="#ff8036" />
-                        </button>
                         {isLoggedIn ?
                             <ProfileDropdown
                                 logout={logout}

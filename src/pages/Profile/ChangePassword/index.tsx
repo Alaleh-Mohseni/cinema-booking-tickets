@@ -1,12 +1,16 @@
 import { RiLockPasswordLine } from "react-icons/ri";
 import { Toaster } from 'react-hot-toast';
+import { yupResolver } from "@hookform/resolvers/yup";
+import { changePasswordSchema } from '../../../schemas/schemas';
 import { useChangePassword } from "../../../hooks/useChangePassword";
 import { useForm } from 'react-hook-form';
 import Button from "../../../components/Button";
+import FormGroup from "../../../components/FormGroup";
 
 function ChangePassword() {
-    const { register, watch, formState: { errors } } = useForm({ mode: 'onTouched' });
-    const { handleSubmitChangePassword } = useChangePassword()
+    const { onSubmitChangePassword } = useChangePassword()
+    const resolver = yupResolver(changePasswordSchema)
+    const { register, handleSubmit, formState: { errors } } = useForm({ resolver })
 
     return (
         <main className="w-full">
@@ -18,76 +22,43 @@ function ChangePassword() {
                             <div className='text-center text-lg'>
                                 <h5>لطفا رمز عبور جدیدی را انتخاب و آنرا وارد کنید.</h5>
                             </div>
-                            <form className="space-y-4 md:space-y-6" onSubmit={handleSubmitChangePassword}>
-                                <div className="flex gap-5 justify-between py-5 pl-16 pr-6 mt-7 w-full bg-gray-800 rounded-3xl text-slate-500">
-                                    <div className="flex gap-3 items-center">
-                                        <RiLockPasswordLine className="shrink-0 self-stretch aspect-[0.96]" size="24" />
-                                        <div className="shrink-0 self-stretch my-auto w-px border border-solid aspect-[0.07] border-slate-500 stroke-[1px] stroke-slate-300"></div>
-                                        <label htmlFor="firstName" className="sr-only">
-                                            OldPassword
-                                        </label>
-                                        <input
-                                            type="password"
-                                            id="oldPassword"
-                                            placeholder="رمز عبور فعلی"
-                                            className="self-stretch my-auto bg-transparent outline-none"
-                                            {...register('oldPassword', {
-                                                required: 'رمز عبور الزامی است',
-                                                minLength: {
-                                                    value: 8,
-                                                    message: 'حداقل تعداد کاراکتر ۸ عدد است',
-                                                }
-                                            })}
-                                        />
-                                    </div>
-                                </div>
-
-                                <div className="flex gap-5 justify-between py-5 pl-16 pr-6 mt-7 w-full bg-gray-800 rounded-3xl text-slate-500">
-                                    <div className="flex gap-3 items-center">
-                                        <RiLockPasswordLine className="shrink-0 self-stretch aspect-[0.96]" size="24" />
-                                        <div className="shrink-0 self-stretch my-auto w-px border border-solid aspect-[0.07] border-slate-500 stroke-[1px] stroke-slate-300"></div>
-                                        <label htmlFor="firstName" className="sr-only">
-                                            NewPassword
-                                        </label>
-                                        <input
-                                            type="password"
-                                            id="newPassword"
-                                            placeholder="رمز عبور جدید"
-                                            className="self-stretch my-auto bg-transparent outline-none"
-                                            {...register('NewPassword', {
-                                                required: 'رمز عبور الزامی است',
-                                                minLength: {
-                                                    value: 8,
-                                                    message: 'حداقل تعداد کاراکتر ۸ عدد است',
-                                                }
-                                            })}
-                                        />
-                                    </div>
-                                </div>
-
-                                <div className="flex gap-5 justify-between py-5 pl-16 pr-6 mt-7 w-full bg-gray-800 rounded-3xl text-slate-500">
-                                    <div className="flex gap-3 items-center">
-                                        <RiLockPasswordLine className="shrink-0 self-stretch aspect-[0.96]" size="24" />
-                                        <div className="shrink-0 self-stretch my-auto w-px border border-solid aspect-[0.07] border-slate-500 stroke-[1px] stroke-slate-300"></div>
-                                        <label htmlFor="lastName" className="sr-only">
-                                            ConfirmPassword
-                                        </label>
-                                        <input
-                                            type="password"
-                                            id="confirmNewPassword"
-                                            placeholder="تکرار رمز عبور جدید"
-                                            className="self-stretch my-auto bg-transparent outline-none"
-                                            {...register('confirmNewPassword', {
-                                                required: 'تکرار رمز عبور الزامی است',
-                                                validate: (value) => {
-                                                    if (watch('password') !== value) {
-                                                        return 'عدم تطابق با رمز وارد شده'
-                                                    }
-                                                }
-                                            })}
-                                        />
-                                    </div>
-                                </div>
+                            <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit(onSubmitChangePassword)}>
+                                <FormGroup
+                                    htmlFor={'oldPassword'}
+                                    label={'Old Password'}
+                                    type={'password'}
+                                    Icon={RiLockPasswordLine}
+                                    name={'oldPassword'}
+                                    id={'oldPassword'}
+                                    className={'bg-gray-800'}
+                                    placeholder={'رمز عبور'}
+                                    register={register}
+                                    errors={errors.oldPassword}
+                                />
+                                <FormGroup
+                                    htmlFor={'newPassword'}
+                                    label={'New Password'}
+                                    type={'password'}
+                                    Icon={RiLockPasswordLine}
+                                    name={'newPassword'}
+                                    id={'newPassword'}
+                                    className={'bg-gray-800'}
+                                    placeholder={'رمز عبور'}
+                                    register={register}
+                                    errors={errors.newPassword}
+                                />
+                                <FormGroup
+                                    htmlFor={'confirmNewPassword'}
+                                    label={'Confirm New Password'}
+                                    type={'password'}
+                                    Icon={RiLockPasswordLine}
+                                    name={'confirmNewPassword'}
+                                    id={'confirmNewPassword'}
+                                    className={'bg-gray-800'}
+                                    placeholder={'رمز عبور'}
+                                    register={register}
+                                    errors={errors.confirmNewPassword}
+                                />
                                 <Button text={'ذخیره تغییرات'} />
                             </form>
                         </div>

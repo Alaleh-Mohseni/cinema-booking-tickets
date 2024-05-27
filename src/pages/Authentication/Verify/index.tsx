@@ -1,5 +1,8 @@
 import { MdOutlineVerifiedUser } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { verifySchema } from '../../../schemas/schemas';
 import { useContext, useState, useEffect } from 'react';
 import { AuthContext } from "../../../contexts/authContext";
 import { HiArrowUturnRight } from "react-icons/hi2";
@@ -7,13 +10,14 @@ import { FaAngleLeft } from "react-icons/fa6";
 import { TbLogin2 } from "react-icons/tb";
 import { Toaster } from 'react-hot-toast';
 import Button from "../../../components/Button";
+import FormGroup from "../../../components/FormGroup";
 
 
 function Verify() {
-    const { verificationCode, phoneNumber, url, register, handleSubmitVerify } = useContext(AuthContext)
-    // const urls = url ? 'register' : 'login'
+    const { verificationCode, phoneNumber, url, onSubmitVerify } = useContext(AuthContext)
+    const resolver = yupResolver(verifySchema)
+    const { register, handleSubmit, formState: { errors } } = useForm({ resolver })
     const urls = url === 'register' ? 'register' : url === 'forget-password' ? 'forget-password' : 'login' ;
-
     const [secondsLeft, setSecondsLeft] = useState(80);
     const [expired, setExpired] = useState(false);
 
@@ -47,23 +51,19 @@ function Verify() {
                 <p>کد: {verificationCode}</p>
                 <p>{expired ? 'لطفا مجدد اقدام کنید' : `${formattedTime}`}</p>
             </div>
-            <form onSubmit={handleSubmitVerify} className="space-y-4 md:space-y-6">
-                <div className="flex gap-5 justify-between py-5 pl-16 pr-6 mt-7 w-full bg-gray-900 rounded-3xl text-slate-500">
-                    <div className="flex gap-3 items-center">
-                        <MdOutlineVerifiedUser className="shrink-0 self-stretch aspect-[0.96]" size="24" />
-                        <div className="shrink-0 self-stretch my-auto w-px border border-solid aspect-[0.07] border-slate-500 stroke-[1px] stroke-slate-300"></div>
-                        <label htmlFor="otp" className="sr-only">
-                            Otp
-                        </label>
-                        <input
-                            type="text"
-                            id="otp"
-                            placeholder="کد تایید..."
-                            className="self-stretch my-auto bg-transparent outline-none"
-                            {...register('otp')}
-                        />
-                    </div>
-                </div>
+            <form onSubmit={handleSubmit(onSubmitVerify)} className="space-y-4 md:space-y-6">
+            <FormGroup
+                    htmlFor={'otp'}
+                    label={'Otp'}
+                    type={'text'}
+                    Icon={MdOutlineVerifiedUser}
+                    name={'otp'}
+                    id={'otp'}
+                    className={'bg-gray-900'}
+                    placeholder={'کد تایید...'}
+                    register={register}
+                    errors={errors.otp}
+                />
                 <Button text={'تایید کد ارسالی'} />
                 <div className="flex justify-between items-center flex-row-reverse text-slate-500 px-3">
                     <div className="flex items-center">

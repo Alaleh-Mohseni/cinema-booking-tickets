@@ -3,12 +3,18 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import { FaAngleLeft } from "react-icons/fa6";
 import { Toaster } from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
+import { yupResolver } from "@hookform/resolvers/yup";
+import { setPasswordSchema } from '../../../schemas/schemas';
 import { useSetPassword } from '../../../hooks/useSetPassword';
 import Button from '../../../components/Button';
+import FormGroup from '../../../components/FormGroup';
+
 
 function SetPassword() {
-    const { register, watch, formState: { errors } } = useForm({ mode: 'onTouched' });
-    const { handleSubmitSetPassword } = useSetPassword()
+    const { onSubmitSetPassword } = useSetPassword()
+    const resolver = yupResolver(setPasswordSchema)
+    const { register, handleSubmit, formState: { errors } } = useForm({ resolver })
+
 
     return (
         <main className="w-full">
@@ -20,53 +26,31 @@ function SetPassword() {
                             <div className='text-center text-lg'>
                                 <h5>لطفا رمز عبور خود را انتخاب و آنرا وارد کنید.</h5>
                             </div>
-                            <form className="space-y-4 md:space-y-6" onSubmit={handleSubmitSetPassword}>
-                                <div className="flex gap-5 justify-between py-5 pl-16 pr-6 mt-7 w-full bg-gray-800 rounded-3xl text-slate-500">
-                                    <div className="flex gap-3 items-center">
-                                        <RiLockPasswordLine className="shrink-0 self-stretch aspect-[0.96]" size="24" />
-                                        <div className="shrink-0 self-stretch my-auto w-px border border-solid aspect-[0.07] border-slate-500 stroke-[1px] stroke-slate-300"></div>
-                                        <label htmlFor="firstName" className="sr-only">
-                                            Password
-                                        </label>
-                                        <input
-                                            type="password"
-                                            id="password"
-                                            placeholder="رمز عبور"
-                                            className="self-stretch my-auto bg-transparent outline-none"
-                                            {...register('password', {
-                                                required: true,
-                                                minLength: {
-                                                    value: 8,
-                                                    message: 'حداقل تعداد کاراکتر ۸ عدد است',
-                                                }
-                                            })}
-                                        />
-                                    </div>
-                                </div>
-
-                                <div className="flex gap-5 justify-between py-5 pl-16 pr-6 mt-7 w-full bg-gray-800 rounded-3xl text-slate-500">
-                                    <div className="flex gap-3 items-center">
-                                        <RiLockPasswordLine className="shrink-0 self-stretch aspect-[0.96]" size="24" />
-                                        <div className="shrink-0 self-stretch my-auto w-px border border-solid aspect-[0.07] border-slate-500 stroke-[1px] stroke-slate-300"></div>
-                                        <label htmlFor="lastName" className="sr-only">
-                                            Confirm Password
-                                        </label>
-                                        <input
-                                            type="password"
-                                            id="confirmPassword"
-                                            placeholder="تکرار رمز عبور"
-                                            className="self-stretch my-auto bg-transparent outline-none"
-                                            {...register('confirmPassword', {
-                                                required: true,
-                                                validate: (value) => {
-                                                    if (watch('password') !== value) {
-                                                        return 'عدم تطابق با رمز وارد شده'
-                                                    }
-                                                }
-                                            })}
-                                        />
-                                    </div>
-                                </div>
+                            <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit(onSubmitSetPassword)}>
+                                <FormGroup
+                                    htmlFor={'password'}
+                                    label={'Password'}
+                                    type={'password'}
+                                    Icon={RiLockPasswordLine}
+                                    name={'password'}
+                                    id={'password'}
+                                    className={'bg-gray-800'}
+                                    placeholder={'رمز عبور'}
+                                    register={register}
+                                    errors={errors.password}
+                                />
+                                <FormGroup
+                                    htmlFor={'confirmPassword'}
+                                    label={'Confirm Password'}
+                                    type={'password'}
+                                    Icon={RiLockPasswordLine}
+                                    name={'confirmPassword'}
+                                    id={'confirmPassword'}
+                                    className={'bg-gray-800'}
+                                    placeholder={'تکرار رمز عبور'}
+                                    register={register}
+                                    errors={errors.confirmPassword}
+                                />
                                 <Button text={'ذخیره تغییرات'} />
                             </form>
                             <div className='flex justify-start text-slate-500 pt-2'>
