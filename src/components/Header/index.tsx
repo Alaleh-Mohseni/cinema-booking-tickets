@@ -1,32 +1,17 @@
-import { useState, useEffect } from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useContext } from 'react';
+import { AuthContext } from '../../contexts/authContext';
+import { Link } from "react-router-dom";
 import Logo from "../../assets/images/Logo.png";
 import SearchForm from "../SearchForm";
-import { lsGet } from '../../utils/localStorage';
 import ProfileDropdown from './DropDown';
 
 function Header() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const { isLoggedIn, logout } = useContext(AuthContext)
     const [dropdownOpen, setDropdownOpen] = useState(false);
-    const navigate = useNavigate()
 
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
     };
-
-    useEffect(() => {
-        const userToken = lsGet('access_token');
-        if (userToken) {
-            setIsLoggedIn(true);
-        }
-    }, []);
-
-    const logout = () => {
-        localStorage.removeItem('access_token');
-        setIsLoggedIn(false);
-        navigate('/')
-    };
-
 
     return (
         <header>

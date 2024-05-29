@@ -87,3 +87,23 @@ export const completeProfileSchema = yup.object().shape({
     .string()
     .required('نام خانوادگی را وارد کنید.'),
 });
+
+
+export const authenticationSchema = yup.object().shape({
+  phoneNumber: yup
+    .string()
+    .required('شماره موبایل الزامی است.'),
+  identity: yup
+    .string()
+    .required('کد ملی الزامی است.'),
+  creditCard: yup
+    .string()
+    .required('شماره کارت بانکی الزامی است.')
+});
+
+
+export const walletSchema = yup.object().shape({
+  payment: yup
+    .string()
+    .required('لطفا مبلغ مورد نظر را وارد کنید.'),
+});

@@ -1,7 +1,7 @@
-import { useState, createContext, ReactNode } from 'react';
+import { useState, createContext, ReactNode, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signUp, login, verify, loginPassword, forgetPassword } from '../services/auth';
-import { lsSet } from '../utils/localStorage';
+import { lsSet, lsGet } from '../utils/localStorage';
 import { toast } from "react-hot-toast";
 
 interface AuthContextProps {
@@ -121,7 +121,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             lsSet('user', response.data, true);
             setVerificationCode(token!);
             console.log(response.data)
-            toast.success(response.data.message);
+            setTimeout(() => {
+                toast.success(response.data.message);
+            }, 3000);
 
             if (urls === 'login' || urls === 'forget-password') {
                 navigate('/');
@@ -175,6 +177,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     };
 
 
+    useEffect(() => {
+        const userToken = lsGet('access_token');
+        if (userToken) {
+            setIsLoggedIn(true);
+        }
+    }, []);
+
+    const logout = () => {
+        localStorage.removeItem('access_token');
+        setIsLoggedIn(false);
+        navigate('/')
+    };
+
+
     const value: AuthContextProps = {
         onSubmitRegister,
         onSubmitLogin,
@@ -185,7 +201,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setVerificationCode,
         phoneNumber,
         isLoggedIn,
-        setIsLoggedIn,
+        logout,
         url,
     };
 

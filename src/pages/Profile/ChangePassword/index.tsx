@@ -7,15 +7,26 @@ import { useForm } from 'react-hook-form';
 import Button from "../../../components/Button";
 import FormGroup from "../../../components/FormGroup";
 
+
 function ChangePassword() {
     const { onSubmitChangePassword } = useChangePassword()
     const resolver = yupResolver(changePasswordSchema)
     const { register, handleSubmit, formState: { errors } } = useForm({ resolver })
 
     return (
-        <main className="w-full">
-            <section className="pt-7">
-                <Toaster position="top-left" reverseOrder={false} />
+        <div className="w-full">
+            <div className="pt-7">
+                <Toaster
+                    position="top-left"
+                    reverseOrder={false}
+                    toastOptions={{
+                        error: {
+                            style: {
+                                fontSize: '13px'
+                            }
+                        },
+                    }}
+                />
                 <div className="flex flex-col items-center justify-center px-6 mx-auto lg:py-0">
                     <div className="w-full bg-gray-900 text-white border border-gray-700 rounded-2xl shadow md:mt-0 sm:max-w-md xl:p-0 relative">
                         <div className="py-6 px-12 space-y-4 md:space-y-6 sm:py-8">
@@ -64,8 +75,8 @@ function ChangePassword() {
                         </div>
                     </div>
                 </div>
-            </section>
-        </main>
+            </div>
+        </div>
     )
 }
 

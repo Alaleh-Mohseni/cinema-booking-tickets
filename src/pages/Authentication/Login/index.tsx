@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from '../../../schemas/schemas';
 import { HiOutlineDevicePhoneMobile } from "react-icons/hi2";
-import { Toaster, ToastBar } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 import Button from '../../../components/Button';
 import FormGroup from '../../../components/FormGroup';
 
@@ -15,7 +15,7 @@ function Login() {
 
     return (
         <>
-            <Toaster>
+            {/* <Toaster>
                 {(t) => (
                     <ToastBar
                         toast={t}
@@ -28,8 +28,18 @@ function Login() {
                         }}
                     />
                 )}
-            </Toaster>
-            {/* <Toaster position="top-left" reverseOrder={false} /> */}
+            </Toaster> */}
+            <Toaster
+                position="top-left"
+                reverseOrder={false}
+                toastOptions={{
+                    error: {
+                        style: {
+                            fontSize: '13px'
+                        }
+                    },
+                }}
+            />
             <h1 className="text-xl text-center font-bold leading-tight tracking-tight md:text-2xl">
                 ورود
             </h1>

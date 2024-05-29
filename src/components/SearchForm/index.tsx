@@ -7,7 +7,7 @@ function SearchForm() {
                 className="bg-gray-800 w-96 h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
                 type="search"
                 name="search"
-                placeholder="جستجوی فیلم، سینما، بازیگر و ..."
+                placeholder="جستجوی فیلم، بازیگر و ..."
             />
             <button type="submit" className="absolute right-0 -top-1 mt-5 mr-4">
                 <IoSearchOutline size="22" />

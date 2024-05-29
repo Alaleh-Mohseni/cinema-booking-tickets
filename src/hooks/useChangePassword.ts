@@ -9,6 +9,7 @@ interface ChangePasswordData {
 }
 
 export function useChangePassword() {
+
     const onSubmitChangePassword = async (data: ChangePasswordData) => {
         const { oldPassword, newPassword, confirmNewPassword } = data;
         const userToken = lsGet('access_token');

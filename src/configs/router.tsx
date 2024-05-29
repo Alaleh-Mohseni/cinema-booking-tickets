@@ -12,6 +12,9 @@ import CompleteProfile from "../pages/Profile/CompleteProfile";
 import SetPassword from "../pages/Profile/SetPassword";
 import ChangePassword from "../pages/Profile/ChangePassword";
 // import CompleteProfile from "../pages/Profile/CompleteProfile/com";
+import Authentication from "../pages/Profile/Authentication";
+import Wallet from "../pages/Profile/Wallet";
+import Tickets from "../pages/Profile/Tickets";
 
 const router = createBrowserRouter([
     {
@@ -71,6 +74,21 @@ const router = createBrowserRouter([
                         path: "change-password",
                         element: <ChangePassword />,
                         errorElement: <ChangePassword />,
+                    },        
+                    {
+                        path: "authentication",
+                        element: <Authentication />,
+                        errorElement: <Authentication />,
+                    },        
+                    {
+                        path: "wallet",
+                        element: <Wallet />,
+                        errorElement: <Wallet />,
+                    },        
+                    {
+                        path: "tickets",
+                        element: <Tickets />,
+                        errorElement: <Tickets />,
                     },        
                 ]
             },

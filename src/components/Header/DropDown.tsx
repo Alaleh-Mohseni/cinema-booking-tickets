@@ -39,7 +39,7 @@ const ProfileDropdown = ({ logout, dropdownOpen, toggleDropdown, setDropdownOpen
                             اطلاعات کاربری
                         </Link>
                         <Link
-                            to="#settings"
+                            to="/dashboard/authentication"
                             className="flex items-center gap-2 px-4 py-2 text-sm hover:text-[#ff8036]"
                             role="menuitem"
                         >
