@@ -1,7 +1,7 @@
 import { useState, createContext, ReactNode, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signUp, login, verify, loginPassword, forgetPassword } from '../services/auth';
-import { lsSet, lsGet } from '../utils/localStorage';
+import { lsSet, lsGet, lsRemove } from '../utils/localStorage';
 import { toast } from "react-hot-toast";
 
 interface AuthContextProps {
@@ -15,6 +15,7 @@ interface AuthContextProps {
     phoneNumber: string;
     isLoggedIn: boolean;
     setIsLoggedIn: (status: boolean) => void;
+    handleLogout: () => void;
     url: string | undefined;
 }
 
@@ -57,9 +58,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     };
 
     const handleError = (err: any) => {
-        const message = err.response?.data?.message || 'خطایی رخ داده است.';
-        toast.error(message);
-        console.error(err);
+        console.log(err)
+        if (err.response?.status === 404 || err.response?.status === 403) {
+            const message = err.response.data.message || err.response.data.detail;
+            toast.error(message);
+        } else {
+            toast.error('خطایی رخ داده است')
+        }
     };
 
 
@@ -74,7 +79,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             const phoneNumber = responseData.data.phone_number;
             const urlRegister = config.url?.split('/').slice(5).join('');
 
-            handleSuccess(response, verifyCode, phoneNumber, urlRegister);
+            handleSuccess(response, verifyCode, phoneNumber, urlRegister!);
         } catch (error) {
             handleError(error);
         }
@@ -114,7 +119,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             if (urls === 'login') {
                 lsSet('access_token', response.data.data.tokens.access_token);
                 lsSet('refresh_token', response.data.data.tokens.refresh_token);
-            } else if (urls === 'register') {
+            } else if (urls === 'register' || urls === 'forget-password') {
                 lsSet('success', response.data.type);
             }
 
@@ -132,17 +137,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             }
         } catch (err) {
             handleError(err);
-            if (err.response?.status === 404 || err.response?.status === 403) {
-                const message = err.response.data.message || err.response.data.detail;
-                toast.error(message);
-            }
         }
     };
 
 
     const onSubmitLoginPassword = async (data: LoginPasswordData) => {
         try {
-            const password = data.password;
+            const { password } = data;
             const response = await loginPassword(phoneNumber, { password });
 
             lsSet('access_token', response.data.data.tokens.access_token);
@@ -158,16 +159,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     const onSubmitForgetPassword = async (data: ForgetPasswordData) => {
         try {
-            const phone = data.phoneNumber;
-
-            const response = await forgetPassword({ phone_number: phone });
+            const { phoneNumber } = data;
+            const response = await forgetPassword({ phone_number: phoneNumber });
             const responseData = response?.data;
 
             if (responseData) {
                 const verifyCode = responseData.token.split(' ').slice(9).join('');
                 const phoneNumber = responseData.data.phone_number;
-                const urlForgetPassword = response.config.url?.split('/').slice(5).join('');
-                handleSuccess(responseData, verifyCode, phoneNumber, urlForgetPassword);
+                handleSuccess(responseData, verifyCode, phoneNumber, 'forget-password');
             } else {
                 throw new Error("Invalid response data");
             }
@@ -184,8 +183,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         }
     }, []);
 
-    const logout = () => {
-        localStorage.removeItem('access_token');
+
+    const handleLogout = () => {
+        lsRemove('access_token');
         setIsLoggedIn(false);
         navigate('/')
     };
@@ -201,7 +201,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setVerificationCode,
         phoneNumber,
         isLoggedIn,
-        logout,
+        handleLogout,
         url,
     };
 

@@ -65,7 +65,7 @@ function Sidebar({ logout }) {
                         </div>
                     </Link>
                 ))}
-                <div className='border-slate-200 border-t-2 border-solid'>
+                <div className='border-gray-800 border-t-2 border-solid'>
                     <button
                         onClick={logout}
                         className="flex justify-center items-center gap-2 py-6 text-lg hover:text-[#ff8036] border-0"

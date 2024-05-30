@@ -1,43 +1,30 @@
 import { httpClient } from './http';
 import type { AxiosRequestConfig } from 'axios';
 
-
-export function signUp(
-  data: AxiosRequestConfig = {},
-  params: AxiosRequestConfig = {}
-) {
-  return (
-    httpClient({
-      url: `/api/v1/accounts/auth/register/`,
-      method: 'POST',
-      data,
-      params,
-    }) ?? null
-  );
+interface RequestConfig extends AxiosRequestConfig {
+  accessToken?: string;
+  phone_number?: string;
 }
 
-
-export function login(
-  data: AxiosRequestConfig = {},
-  params: AxiosRequestConfig = {}
-) {
-  return (
-    httpClient({
-      url: `/api/v1/accounts/auth/login/`,
-      method: 'POST',
-      data,
-      params,
-    }) ?? null
-  );
+export function signUp(data: any, params?: AxiosRequestConfig) {
+  return httpClient({
+    url: `/api/v1/accounts/auth/register/`,
+    method: 'POST',
+    data,
+    params,
+  }) ?? null;
 }
 
+export function login(data: any, params?: AxiosRequestConfig) {
+  return httpClient({
+    url: `/api/v1/accounts/auth/login/`,
+    method: 'POST',
+    data,
+    params,
+  }) ?? null;
+}
 
-export function verify(
-  op: string,
-  phone_number: string,
-  data: AxiosRequestConfig = {},
-  params: AxiosRequestConfig = {}
-) {
+export function verify(op: string, phone_number: string, data: any, params?: AxiosRequestConfig) {
   return httpClient({
     url: `/api/v1/accounts/auth/${op}/${phone_number}/`,
     method: 'POST',
@@ -46,12 +33,7 @@ export function verify(
   }) ?? null;
 }
 
-
-export function loginPassword(
-  phone_number: string,
-  data: AxiosRequestConfig = {},
-  params: AxiosRequestConfig = {},
-) {
+export function loginPassword(phone_number: string, data: any, params?: AxiosRequestConfig) {
   return httpClient({
     url: `/api/v1/accounts/auth/login/password/${phone_number}/`,
     method: 'POST',
@@ -60,68 +42,44 @@ export function loginPassword(
   }) ?? null;
 }
 
-
-export function changePassword(
-  data: AxiosRequestConfig = {},
-  accessToken: string
-) {
-  return (
-    httpClient({
-      url: `/api/v1/accounts/change_password/`,
-      method: 'POST',
-      data,
-      headers: {
-        Authorization: `Bearer ${accessToken}`
-      }
-    }) ?? null
-  );
+export function changePassword(data: any, accessToken: string) {
+  return httpClient({
+    url: `/api/v1/accounts/change_password/`,
+    method: 'POST',
+    data,
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  }) ?? null;
 }
 
-
-export function profile(
-  data: AxiosRequestConfig = {},
-  accessToken: string
-) {
-  return (
-    httpClient({
-      url: `/api/v1/accounts/complete_profile/`,
-      method: 'POST',
-      data,
-      headers: {
-        Authorization: `Bearer ${accessToken}`
-      }
-    }) ?? null
-  );
+export function profile(data: any, accessToken: string) {
+  return httpClient({
+    url: `/api/v1/accounts/complete_profile/`,
+    method: 'POST',
+    data,
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  }) ?? null;
 }
 
-
-export function setPassword(
-  data: AxiosRequestConfig = {},
-  accessToken: string
-) {
-  return (
-    httpClient({
-      url: `/api/v1/accounts/set_password/`,
-      method: 'POST',
-      data,
-      headers: {
-        Authorization: `Bearer ${accessToken}`
-      }
-    }) ?? null
-  );
+export function setPassword(data: any, accessToken: string) {
+  return httpClient({
+    url: `/api/v1/accounts/set_password/`,
+    method: 'POST',
+    data,
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  }) ?? null;
 }
 
-
-export function forgetPassword(
-  data: AxiosRequestConfig = {},
-  params: AxiosRequestConfig = {},
-) {
-  return (
-    httpClient({
-      url: `/api/v1/accounts/auth/forget_password/`,
-      method: 'POST',
-      data,
-      params,
-    }) ?? null
-  );
+export function forgetPassword(data: any, params?: AxiosRequestConfig) {
+  return httpClient({
+    url: `/api/v1/accounts/auth/forget_password/`,
+    method: 'POST',
+    data,
+    params,
+  }) ?? null;
 }

@@ -140,6 +140,6 @@ a {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: gray;
+  background-color: #374151;
   border-radius: 1rem;
 }

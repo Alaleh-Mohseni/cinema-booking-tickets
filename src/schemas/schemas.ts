@@ -23,6 +23,7 @@ export const verifySchema = yup.object().shape({
   otp: yup
     .string()
     .required('کد ارسال شده به موبایل را وارد کنید.')
+    .max(6, "کد 6 رقمی ارسال شده به موبایل را وارد کنید.")
 })
 
 
@@ -74,12 +75,6 @@ export const completeProfileSchema = yup.object().shape({
   photo: yup
     .mixed()
     .required('File is required'),
-    // .test('fileSize', 'The file is too large', (value) => {
-    //   return value && value[0] && value[0].size <= 2000000; // 2MB
-    // })
-    // .test('fileType', 'Unsupported file format', (value) => {
-    //   return value && value[0] && ['image/jpeg', 'image/png'].includes(value[0].type);
-    // }),
   firstName: yup
     .string()
     .required('نام خود را وارد کنید.'),

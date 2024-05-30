@@ -4,9 +4,9 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from '../../../schemas/schemas';
 import { HiOutlineDevicePhoneMobile } from "react-icons/hi2";
-import { Toaster } from 'react-hot-toast';
 import Button from '../../../components/Button';
 import FormGroup from '../../../components/FormGroup';
+import ToasterMessage from '../../../components/ToasterMessage';
 
 function Login() {
     const { onSubmitLogin } = useContext(AuthContext)
@@ -15,31 +15,7 @@ function Login() {
 
     return (
         <>
-            {/* <Toaster>
-                {(t) => (
-                    <ToastBar
-                        toast={t}
-                        style={{
-                            ...t.style,
-                            animation: t.visible ? 'custom-enter 0.5s ease' : 'custom-exit 3s ease',
-                            position: 'relative',
-                            top: 0,
-                            left: 0
-                        }}
-                    />
-                )}
-            </Toaster> */}
-            <Toaster
-                position="top-left"
-                reverseOrder={false}
-                toastOptions={{
-                    error: {
-                        style: {
-                            fontSize: '13px'
-                        }
-                    },
-                }}
-            />
+            <ToasterMessage />
             <h1 className="text-xl text-center font-bold leading-tight tracking-tight md:text-2xl">
                 ورود
             </h1>

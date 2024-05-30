@@ -4,34 +4,35 @@ import { FaAngleLeft } from "react-icons/fa6";
 import { HiUser } from "react-icons/hi";
 import { useCompleteProfile } from '../../../hooks/useCompleteProfile';
 import { useForm } from 'react-hook-form';
-// import { yupResolver } from "@hookform/resolvers/yup";
-// import { completeProfileSchema } from '../../../schemas/schemas';
-import { Toaster } from 'react-hot-toast';
+import { yupResolver } from "@hookform/resolvers/yup";
+import { completeProfileSchema } from '../../../schemas/schemas';
 import Button from '../../../components/Button';
-// import FormGroup from '../../../components/FormGroup';
+import ToasterMessage from '../../../components/ToasterMessage';
+import FormGroup from '../../../components/FormGroup';
 
 
 function CompleteProfile() {
-  const { handleSubmitProfile, photo, userPhoto } = useCompleteProfile()
-  const { register, formState: { errors } } = useForm({ mode: 'onTouched' });
-  // const resolver = yupResolver(completeProfileSchema)
-  // const { register, handleSubmit, formState: { errors }, control } = useForm({ resolver })
+  const { handleSubmitProfile, photo, userPhoto, handlePhotoChange, preview } = useCompleteProfile()
+  const resolver = yupResolver(completeProfileSchema)
+  const { register, handleSubmit, formState: { errors } } = useForm({ resolver, mode: 'onTouched' })
 
   return (
-    <main className="w-full">
-      <section className="pt-7">
-        <Toaster position="top-left" reverseOrder={false} />
+    <div className="w-full">
+      <div className="pt-7">
+        <ToasterMessage />
         <div className="flex flex-col items-center justify-center px-6 mx-auto lg:py-0">
           <div className="w-full bg-gray-900 text-white border border-gray-700 rounded-2xl shadow md:mt-0 sm:max-w-md xl:p-0 relative">
             <div className="py-6 px-12 space-y-4 md:space-y-6 sm:py-8">
-              <form className="space-y-4 md:space-y-6" onSubmit={handleSubmitProfile}>
+              <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit(handleSubmitProfile)}>
                 <div className="py-2 flex justify-center items-center relative">
                   {photo ?
-                    <img
-                      src={userPhoto}
-                      className="w-40 h-40 rounded-full"
-                      alt="user photo"
-                    />
+                    <div className='w-44 h-44 flex justify-center items-center rounded-full border-4 border-solid border-[#ff8036]'>
+                      <img
+                        src={userPhoto || preview}
+                        className="w-40 h-40 rounded-full"
+                        alt="user photo"
+                      />
+                    </div>
                     :
                     <div className="w-40 h-40 bg-orange-100 mx-auto rounded-full shadow-2xl text-[#ff8036] flex justify-center items-center">
                       <HiUser className='h-20 w-20' />
@@ -41,10 +42,11 @@ function CompleteProfile() {
                     type="file"
                     className="w-full h-full cursor-pointer mb-0 opacity-0 absolute top-0"
                     id="photo"
-                    {...register('photo', { required: true })}
+                    {...register('photo')}
+                    onChange={handlePhotoChange}
                   />
                 </div>
-                {/* <FormGroup
+                <FormGroup
                   htmlFor={'firstName'}
                   label={'First Name'}
                   type={'text'}
@@ -67,40 +69,7 @@ function CompleteProfile() {
                   placeholder={'نام خانوادگی'}
                   register={register}
                   errors={errors.lastName}
-                /> */}
-                <div className="flex gap-5 justify-between py-5 pl-16 pr-6 mt-7 w-full bg-gray-800 rounded-3xl text-slate-500">
-                  <div className="flex gap-3 items-center">
-                    <RiUserSmileLine className="shrink-0 self-stretch aspect-[0.96]" size="24" />
-                    <div className="shrink-0 self-stretch my-auto w-px border border-solid aspect-[0.07] border-slate-500 stroke-[1px] stroke-slate-300"></div>
-                    <label htmlFor="firstName" className="sr-only">
-                      FirstName
-                    </label>
-                    <input
-                      type="text"
-                      id="firstName"
-                      placeholder="نام"
-                      className="self-stretch my-auto bg-transparent outline-none"
-                      {...register('firstName', { required: true })}
-                    />
-                  </div>
-                </div>
-
-                <div className="flex gap-5 justify-between py-5 pl-16 pr-6 mt-7 w-full bg-gray-800 rounded-3xl text-slate-500">
-                  <div className="flex gap-3 items-center">
-                    <RiUser6Line className="shrink-0 self-stretch aspect-[0.96]" size="24" />
-                    <div className="shrink-0 self-stretch my-auto w-px border border-solid aspect-[0.07] border-slate-500 stroke-[1px] stroke-slate-300"></div>
-                    <label htmlFor="lastName" className="sr-only">
-                      LastName
-                    </label>
-                    <input
-                      type="text"
-                      id="lastName"
-                      placeholder="نام خانوادگی"
-                      className="self-stretch my-auto bg-transparent outline-none"
-                      {...register('lastName', { required: true })}
-                    />
-                  </div>
-                </div>
+                />
                 <Button text={'ذخیره تغییرات'} />
               </form>
               <div className='flex justify-start text-slate-500 pt-2'>
@@ -113,8 +82,8 @@ function CompleteProfile() {
             </div>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </div>
   )
 }
 

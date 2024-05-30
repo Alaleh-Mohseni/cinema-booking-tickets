@@ -11,7 +11,6 @@ import LoginPassword from "../pages/Authentication/LoginPassword";
 import CompleteProfile from "../pages/Profile/CompleteProfile";
 import SetPassword from "../pages/Profile/SetPassword";
 import ChangePassword from "../pages/Profile/ChangePassword";
-// import CompleteProfile from "../pages/Profile/CompleteProfile/com";
 import Authentication from "../pages/Profile/Authentication";
 import Wallet from "../pages/Profile/Wallet";
 import Tickets from "../pages/Profile/Tickets";

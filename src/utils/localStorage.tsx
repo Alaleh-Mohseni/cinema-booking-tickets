@@ -29,3 +29,11 @@ export function lsGet(key: string, isObject = false) {
         return localStorage.getItem(key);
     }
 }
+
+export function lsRemove(key: string): void {
+    if (typeof key !== 'string') {
+        throw new Error('key must be string');
+    }
+
+    localStorage.removeItem(key);
+}

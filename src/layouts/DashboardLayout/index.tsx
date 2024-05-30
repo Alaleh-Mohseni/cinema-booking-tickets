@@ -4,11 +4,11 @@ import { AuthContext } from '../../contexts/authContext';
 import Sidebar from './Sidebar';
 
 function DashboardLayout() {
-    const { logout } = useContext(AuthContext)
+    const { handleLogout } = useContext(AuthContext)
     
     return (
         <div className='w-full flex'>
-            <Sidebar logout={logout} />
+            <Sidebar logout={handleLogout} />
             <main className='grow'>
                 <div className="flex flex-col py-6 px-16 h-screen w-full text-white bg-gray-800">
                     <Outlet />

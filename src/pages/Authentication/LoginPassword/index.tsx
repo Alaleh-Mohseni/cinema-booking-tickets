@@ -6,10 +6,9 @@ import { loginPasswordSchema } from '../../../schemas/schemas';
 import { AuthContext } from '../../../contexts/authContext';
 import { RiLockPasswordLine } from "react-icons/ri";
 import { FaAngleLeft } from "react-icons/fa6";
-import { Toaster } from 'react-hot-toast';
 import Button from '../../../components/Button';
 import FormGroup from '../../../components/FormGroup';
-
+import ToasterMessage from '../../../components/ToasterMessage';
 
 function LoginPassword() {
     const { onSubmitLoginPassword } = useContext(AuthContext)
@@ -18,7 +17,7 @@ function LoginPassword() {
 
     return (
         <>
-            <Toaster position="top-left" reverseOrder={false} />
+            <ToasterMessage />
             <h1 className="text-xl text-center font-semibold leading-tight tracking-tight md:text-2xl">
                 ورود با رمز عبور
             </h1>

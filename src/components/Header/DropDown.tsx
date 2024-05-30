@@ -4,7 +4,7 @@ import { PiUserFocus } from "react-icons/pi";
 import { RiShieldUserLine } from "react-icons/ri";
 import { TbLogout2 } from "react-icons/tb";
 
-const ProfileDropdown = ({ logout, dropdownOpen, toggleDropdown, setDropdownOpen }) => {
+const ProfileDropdown = ({ logout, dropdownOpen, toggleDropdown, setDropdownOpen, handleDropDownRoutes }) => {
     return (
         <div className="relative inline-block text-left">
             <div>
@@ -29,23 +29,22 @@ const ProfileDropdown = ({ logout, dropdownOpen, toggleDropdown, setDropdownOpen
                     aria-labelledby="menu-button"
                 >
                     <div className="py-1 text-right" role="none">
-                        <Link
-                            to="/dashboard/complete-profile"
-                            onClick={() => setDropdownOpen(false)}
-                            className="flex items-center gap-2 px-4 py-2 text-sm hover:text-[#ff8036]"
+                        <button
+                            onClick={() => handleDropDownRoutes('complete-profile')}
+                            className="flex items-center gap-2 px-4 py-2 text-sm hover:text-[#ff8036] border-0"
                             role="menuitem"
                         >
                             <RiShieldUserLine size='22' />
                             اطلاعات کاربری
-                        </Link>
-                        <Link
-                            to="/dashboard/authentication"
-                            className="flex items-center gap-2 px-4 py-2 text-sm hover:text-[#ff8036]"
+                        </button>
+                        <button
+                            onClick={() => handleDropDownRoutes('authentication')}
+                            className="flex items-center gap-2 px-4 py-2 text-sm hover:text-[#ff8036] border-0"
                             role="menuitem"
                         >
                             <PiUserFocus size='24' />
                             احراز هویت
-                        </Link>
+                        </button>
                         <button
                             onClick={logout}
                             className="flex justify-center items-center gap-2 px-4 py-2 text-sm hover:text-[#ff8036] border-0"

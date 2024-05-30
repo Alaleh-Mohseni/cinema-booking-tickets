@@ -6,7 +6,7 @@ import { AuthContext } from '../../../contexts/authContext';
 import { HiOutlineDevicePhoneMobile } from "react-icons/hi2";
 import Button from '../../../components/Button';
 import FormGroup from '../../../components/FormGroup';
-
+import ToasterMessage from '../../../components/ToasterMessage';
 
 function ForgetPassword() {
     const { onSubmitForgetPassword } = useContext(AuthContext)
@@ -15,7 +15,7 @@ function ForgetPassword() {
 
     return (
         <>
-            {/* <Toaster position="top-right" reverseOrder={false} /> */}
+            <ToasterMessage />
             <h1 className="text-xl text-center font-semibold leading-tight tracking-tight md:text-2xl">
                 فراموشی رمز عبور
             </h1>

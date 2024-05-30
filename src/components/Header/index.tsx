@@ -1,17 +1,23 @@
 import { useState, useContext } from 'react';
 import { AuthContext } from '../../contexts/authContext';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../assets/images/Logo.png";
 import SearchForm from "../SearchForm";
 import ProfileDropdown from './DropDown';
 
 function Header() {
-    const { isLoggedIn, logout } = useContext(AuthContext)
+    const { isLoggedIn, handleLogout } = useContext(AuthContext)
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const navigate = useNavigate()
 
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
     };
+
+    const handleDropDownRoutes = (route: string) => {
+        setDropdownOpen(false)
+        navigate(`/dashboard/${route}`)
+    }
 
     return (
         <header>
@@ -24,10 +30,11 @@ function Header() {
                     <div className="flex items-center lg:order-2">
                         {isLoggedIn ?
                             <ProfileDropdown
-                                logout={logout}
+                                logout={handleLogout}
                                 dropdownOpen={dropdownOpen}
                                 toggleDropdown={toggleDropdown}
                                 setDropdownOpen={setDropdownOpen}
+                                handleDropDownRoutes={handleDropDownRoutes}
                             />
                             :
                             <>

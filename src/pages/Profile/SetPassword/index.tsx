@@ -1,14 +1,13 @@
 import { Link } from 'react-router-dom';
 import { RiLockPasswordLine } from "react-icons/ri";
 import { FaAngleLeft } from "react-icons/fa6";
-import { Toaster } from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
 import { setPasswordSchema } from '../../../schemas/schemas';
 import { useSetPassword } from '../../../hooks/useSetPassword';
 import Button from '../../../components/Button';
 import FormGroup from '../../../components/FormGroup';
-
+import ToasterMessage from '../../../components/ToasterMessage';
 
 function SetPassword() {
     const { onSubmitSetPassword } = useSetPassword()
@@ -17,9 +16,9 @@ function SetPassword() {
 
 
     return (
-        <main className="w-full">
-            <section className="pt-7">
-                <Toaster position="top-left" reverseOrder={false} />
+        <div className="w-full">
+            <div className="pt-7">
+                <ToasterMessage />
                 <div className="flex flex-col items-center justify-center px-6 mx-auto lg:py-0">
                     <div className="w-full bg-gray-900 text-white border border-gray-700 rounded-2xl shadow md:mt-0 sm:max-w-md xl:p-0 relative">
                         <div className="py-6 px-12 space-y-4 md:space-y-6 sm:py-8">
@@ -63,8 +62,8 @@ function SetPassword() {
                         </div>
                     </div>
                 </div>
-            </section>
-        </main>
+            </div>
+        </div>
     )
 }
 

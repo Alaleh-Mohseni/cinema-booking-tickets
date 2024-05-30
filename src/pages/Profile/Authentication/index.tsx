@@ -1,12 +1,12 @@
 import { RiBankCardLine } from "react-icons/ri";
 import { HiOutlineDevicePhoneMobile } from "react-icons/hi2";
 import { PiIdentificationCard } from "react-icons/pi";
-import { Toaster } from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
 import { authenticationSchema } from '../../../schemas/schemas';
 import Button from '../../../components/Button';
 import FormGroup from '../../../components/FormGroup';
+import ToasterMessage from "../../../components/ToasterMessage";
 
 function Authentication() {
     const resolver = yupResolver(authenticationSchema)
@@ -15,7 +15,7 @@ function Authentication() {
     return (
         <div className="w-full">
             <div className="pt-7">
-                <Toaster position="top-left" reverseOrder={false} />
+                <ToasterMessage />
                 <div className="flex flex-col items-center justify-center px-6 mx-auto lg:py-0">
                     <div className="w-full bg-gray-900 text-white border border-gray-700 rounded-2xl shadow md:mt-0 max-w-2xl xl:p-0 relative">
                         <div className="py-6 px-10 space-y-8 md:space-y-6 sm:py-8">
