@@ -35,7 +35,7 @@ const router = createBrowserRouter([
                 errorElement: <Verify />,
             },
             {
-                path: "login-password/:phoneNumber",
+                path: "login-password",
                 element: <LoginPassword />,
                 errorElement: <LoginPassword />,
             },

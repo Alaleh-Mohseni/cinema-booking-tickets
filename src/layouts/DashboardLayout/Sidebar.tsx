@@ -6,7 +6,6 @@ import { IoWalletOutline, IoTicketOutline } from "react-icons/io5";
 import { MdLockReset } from "react-icons/md";
 import { Link } from 'react-router-dom';
 
-
 const navLinks = [
     {
         title: 'اطلاعات کاربری',
@@ -42,7 +41,7 @@ const navLinks = [
 
 
 
-function Sidebar({ logout }) {
+function Sidebar({ setIsModalOpen }: any) {
     const [activeNavIndex, setActiveNavIndex] = useState(0)
 
     return (
@@ -67,7 +66,7 @@ function Sidebar({ logout }) {
                 ))}
                 <div className='border-gray-800 border-t-2 border-solid'>
                     <button
-                        onClick={logout}
+                        onClick={() => setIsModalOpen(true)}
                         className="flex justify-center items-center gap-2 py-6 text-lg hover:text-[#ff8036] border-0"
                     >
                         <TbLogout2 size='24' />

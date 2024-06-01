@@ -28,6 +28,10 @@ export const verifySchema = yup.object().shape({
 
 
 export const loginPasswordSchema = yup.object().shape({
+  phoneNumber: yup
+  .string()
+  .required('شماره موبایل الزامی است.')
+  .matches(phoneNumberRules, 'شماره موبایل معتبر نیست'),
   password: yup
     .string()
     .required('رمز عبور الزامی است.')

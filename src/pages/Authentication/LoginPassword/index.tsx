@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { loginPasswordSchema } from '../../../schemas/schemas';
 import { AuthContext } from '../../../contexts/authContext';
 import { RiLockPasswordLine } from "react-icons/ri";
+import { HiOutlineDevicePhoneMobile } from "react-icons/hi2";
 import { FaAngleLeft } from "react-icons/fa6";
 import Button from '../../../components/Button';
 import FormGroup from '../../../components/FormGroup';
@@ -23,6 +24,18 @@ function LoginPassword() {
             </h1>
             <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit(onSubmitLoginPassword)}>
                 <FormGroup
+                    htmlFor={'phoneNumber'}
+                    label={'Phone Number'}
+                    type={'text'}
+                    Icon={HiOutlineDevicePhoneMobile}
+                    name={'phoneNumber'}
+                    id={'phoneNumber'}
+                    className={'bg-gray-900'}
+                    placeholder={'شماره موبایل'}
+                    register={register}
+                    errors={errors.phoneNumber}
+                />
+                <FormGroup
                     htmlFor={'password'}
                     label={'Password'}
                     type={'password'}
@@ -36,7 +49,7 @@ function LoginPassword() {
                 />
                 <Button text={'ادامه'} />
             </form>
-            <div className='flex justify-start text-slate-500 pt-2'>
+            <div className='flex justify-start text-slate-400 pt-2'>
                 <Link to='/forget-password' className='flex justify-center items-center gap-2'>
                     <p>فراموشی رمز عبور</p>
                     <FaAngleLeft />

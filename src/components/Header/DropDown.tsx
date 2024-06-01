@@ -1,10 +1,9 @@
-import { Link } from 'react-router-dom';
 import { FaAngleDown } from "react-icons/fa";
 import { PiUserFocus } from "react-icons/pi";
 import { RiShieldUserLine } from "react-icons/ri";
 import { TbLogout2 } from "react-icons/tb";
 
-const ProfileDropdown = ({ logout, dropdownOpen, toggleDropdown, setDropdownOpen, handleDropDownRoutes }) => {
+const ProfileDropdown = ({ dropdownOpen, toggleDropdown, handleDropDownRoutes, handleShowModal }: any) => {
     return (
         <div className="relative inline-block text-left">
             <div>
@@ -46,7 +45,7 @@ const ProfileDropdown = ({ logout, dropdownOpen, toggleDropdown, setDropdownOpen
                             احراز هویت
                         </button>
                         <button
-                            onClick={logout}
+                            onClick={handleShowModal}
                             className="flex justify-center items-center gap-2 px-4 py-2 text-sm hover:text-[#ff8036] border-0"
                             role="menuitem"
                         >
@@ -56,7 +55,7 @@ const ProfileDropdown = ({ logout, dropdownOpen, toggleDropdown, setDropdownOpen
                     </div>
                 </div>
             )}
-        </div>
+        </div >
     );
 };
 

@@ -26,16 +26,16 @@ export function login(data: any, params?: AxiosRequestConfig) {
 
 export function verify(op: string, phone_number: string, data: any, params?: AxiosRequestConfig) {
   return httpClient({
-    url: `/api/v1/accounts/auth/${op}/${phone_number}/`,
+    url: `/api/v1/accounts/auth/${op}_op/${phone_number}/`,
     method: 'POST',
     data,
     params,
   }) ?? null;
 }
 
-export function loginPassword(phone_number: string, data: any, params?: AxiosRequestConfig) {
+export function loginPassword(data: any, params?: AxiosRequestConfig) {
   return httpClient({
-    url: `/api/v1/accounts/auth/login/password/${phone_number}/`,
+    url: `/api/v1/accounts/auth/login/with_password/`,
     method: 'POST',
     data,
     params,

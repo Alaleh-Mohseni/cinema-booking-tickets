@@ -4,9 +4,13 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from '../../../schemas/schemas';
 import { HiOutlineDevicePhoneMobile } from "react-icons/hi2";
+import { FaAngleLeft } from "react-icons/fa6";
+import { TbLogin2 } from "react-icons/tb";
+import { Link } from "react-router-dom";
 import Button from '../../../components/Button';
 import FormGroup from '../../../components/FormGroup';
 import ToasterMessage from '../../../components/ToasterMessage';
+
 
 function Login() {
     const { onSubmitLogin } = useContext(AuthContext)
@@ -34,6 +38,13 @@ function Login() {
                 />
                 <Button text={'ادامه'} />
             </form>
+            <div className='flex text-slate-400'>
+                <Link to='/login-password' className='flex justify-center items-center gap-2'>
+                    <TbLogin2 size='24' />
+                    <p>ورود با رمز عبور</p>
+                    <FaAngleLeft />
+                </Link>
+            </div>
         </>
     )
 }
