@@ -27,7 +27,7 @@ export function useChangePassword() {
             lsSet('user', response.data, true);
             console.log('ChangePass successful:', response.data);
             toast.success(response.data.message);
-        } catch (err) {
+        } catch (err: any) {
             console.error('ChangePass failed:', err);
             const errorMessage = err.response?.data?.message;
             toast.error(errorMessage);

@@ -20,7 +20,7 @@ export function useSetPassword() {
             lsSet('user', response.data, true);
             console.log('Set password successful:', response.data);
             toast.success(response.data.message);
-        } catch (err) {
+        } catch (err: any) {
             console.error('Set password failed:', err);
             const errorMessage = err.response?.data?.detail || 'خطایی رخ داده است.';
             toast.error(errorMessage);

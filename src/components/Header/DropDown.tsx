@@ -3,7 +3,12 @@ import { PiUserFocus } from "react-icons/pi";
 import { RiShieldUserLine } from "react-icons/ri";
 import { TbLogout2 } from "react-icons/tb";
 
-const ProfileDropdown = ({ dropdownOpen, toggleDropdown, handleDropDownRoutes, handleShowModal }: any) => {
+function ProfileDropdown({
+    dropdownOpen,
+    toggleDropdown,
+    handleDropDownRoutes,
+    handleShowModal
+}: any) {
     return (
         <div className="relative inline-block text-left">
             <div>

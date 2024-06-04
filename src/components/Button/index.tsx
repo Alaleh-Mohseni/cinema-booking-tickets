@@ -1,4 +1,4 @@
-function Button({ text }) {
+function Button({ text }: any) {
     return (
         <button
             type="submit"
