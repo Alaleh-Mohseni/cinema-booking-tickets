@@ -10,7 +10,10 @@ import ToasterMessage from "../../../components/ToasterMessage";
 
 function Authentication() {
     const resolver = yupResolver(authenticationSchema)
-    const { register, formState: { errors } } = useForm({ resolver })
+    const { register, formState: { errors }, handleSubmit } = useForm({ resolver })
+    const onSubmit = (data) => {
+        console.log(data)
+    }
 
     return (
         <div className="w-full">
@@ -22,7 +25,7 @@ function Authentication() {
                             <div className='text-center text-lg'>
                                 <h5>برای استفاده از کیف پول و برداشت وجه لازم است اطلاعات زیر را تکمیل کنید.</h5>
                             </div>
-                            <form className="space-y-4 md:space-y-6 max-w-sm mx-auto">
+                            <form className="space-y-4 md:space-y-6 max-w-sm mx-auto" onSubmit={handleSubmit(onSubmit)}>
                                 <FormGroup
                                     htmlFor={'phoneNumber'}
                                     label={'Phone Number'}

@@ -8,7 +8,10 @@ import ToasterMessage from "../../../components/ToasterMessage";
 
 function Wallet() {
     const resolver = yupResolver(walletSchema)
-    const { register, formState: { errors } } = useForm({ resolver })
+    const { register, formState: { errors }, handleSubmit } = useForm({ resolver })
+    const onSubmit = (data) => {
+        console.log(data)
+    }
 
     return (
         <div className="w-full">
@@ -22,7 +25,7 @@ function Wallet() {
                                 <p>موجودی فعلی: 0 تومان</p>
                                 <p className="leading-relaxed">برای افزایش موجودی کیف پول، مبلغ مورد نظر خود را "به تومان" وارد کنید.</p>
                             </div>
-                            <form className="space-y-4 md:space-y-6 max-w-sm mx-auto">
+                            <form className="space-y-4 md:space-y-6 max-w-sm mx-auto" onSubmit={handleSubmit(onSubmit)}>
                                 <FormGroup
                                     htmlFor={'payment'}
                                     label={'Payment'}
