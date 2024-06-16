@@ -53,7 +53,7 @@ describe('CompleteProfile Component', () => {
       </BrowserRouter>
     );
 
-    const inputFile = screen.getByLabelText('First Name').closest('input');
+    const inputFile = screen.getByPlaceholderText('photo').closest('input');
     expect(inputFile).toHaveAttribute('type', 'file');
 
     fireEvent.change(inputFile, {

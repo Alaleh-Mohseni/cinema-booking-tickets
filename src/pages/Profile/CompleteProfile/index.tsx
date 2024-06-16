@@ -44,6 +44,7 @@ function CompleteProfile() {
                     id="photo"
                     {...register('photo')}
                     onChange={handlePhotoChange}
+                    placeholder='photo'
                   />
                 </div>
                 <FormGroup
