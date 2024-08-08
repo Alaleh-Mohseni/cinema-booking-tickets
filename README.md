@@ -87,32 +87,40 @@ npm run dev
       <td width="50%"><img src="/src/assets/screenshots/forget-password.png"/></td>
     </tr>
   </tbody>
-  <thead>
+    <thead>
     <tr>
-      <th width="33.33%">Complete profile</th>
-      <th width="33.33%">Set password</th>
-      <th width="33.33%">Change password</th>
+      <th width="50%">Complete profile</th>
+      <th width="50%">Logout</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td width="33.33%"><img src="/src/assets/screenshots/complete-profile.png"/></td>
-      <td width="33.33%"><img src="/src/assets/screenshots/password.png"/></td>
-      <td width="33.33%"><img src="/src/assets/screenshots/change-password.png"/></td>
+      <td width="50%"><img src="/src/assets/screenshots/complete-profile.png"/></td>
+      <td width="50%"><img src="/src/assets/screenshots/logout.png"/></td>
+    </tr>
+  </tbody>
+  <thead>
+    <tr>
+      <th width="50%">Set password</th>
+      <th width="50%">Change password</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td width="50%"><img src="/src/assets/screenshots/password.png"/></td>
+      <td width="50%"><img src="/src/assets/screenshots/change-password.png"/></td>
     </tr>
   </tbody>
     <thead>
     <tr>
-      <th width="33.33%">Cart</th>
-      <th width="33.33%">Wallet</th>
-      <th width="33.33%">Logout</th>
+      <th width="50%">Cart</th>
+      <th width="50%">Wallet</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td width="33.33%"><img src="/src/assets/screenshots/cart.png"/></td>
-      <td width="33.33%"><img src="/src/assets/screenshots/wallet.png"/></td>
-      <td width="33.33%"><img src="/src/assets/screenshots/logout.png"/></td>
+      <td width="50%"><img src="/src/assets/screenshots/cart.png"/></td>
+      <td width="50%"><img src="/src/assets/screenshots/wallet.png"/></td>
     </tr>
   </tbody>
 </table>
