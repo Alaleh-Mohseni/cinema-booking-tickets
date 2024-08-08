@@ -12,7 +12,7 @@ The Cinema Booking Tickets is a web app built to streamline the process of booki
 
 ### Authors
 
-- @Alaleh-Mohseni
+- [@Alaleh-Mohseni](https://github.com/Alaleh-Mohseni)
 - [@AliReza7222](https://github.com/AliReza7222)
 
 ### How to Run
