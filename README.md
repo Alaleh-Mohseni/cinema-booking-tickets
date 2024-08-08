@@ -4,11 +4,20 @@
 
 The Cinema Booking Tickets is a web app built to streamline the process of booking and managing tickets for movie screenings in a cinema. This system allows users to browse available movies, view showtimes, select seats, and purchase tickets online. It also provides an admin interface for managing movies, screenings, and user bookings.
 
+### Features
+
+- View list of movies
+- View movie details
+- Book movie tickets
+- Manage order history
+- User authentication (login, register)
+
 ### Tech Stack
 
 - ReactJS
 - TypeScript
 - Vitest
+- TailwindCss
 
 ### Authors
 
@@ -27,3 +36,14 @@ git clone https://github.com/your-repository.git
 ```bash
 cd cinema-tickets
 ```
+3. Install the dependencies:
+```bash
+npm install
+```
+4. Start the development server:
+```bash
+npm run dev
+```
+5. Access the application:
+Open a web browser and navigate to `http://localhost:5173` to access the application.
+   
