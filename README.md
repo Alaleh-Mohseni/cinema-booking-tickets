@@ -30,7 +30,7 @@ To clone and run the Cinema Booking Tickets, follow these steps:
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-repository.git
+git clone https://github.com/Alaleh-Mohseni/cinema-booking-tickets.git
 ```
 2. Navigate to the project directory:
 ```bash
@@ -45,5 +45,5 @@ npm install
 npm run dev
 ```
 5. Access the application:
- - Open a web browser and navigate to `http://localhost:5173` to access the application.
+  - Open a web browser and navigate to `http://localhost:5173` to access the application.
    
