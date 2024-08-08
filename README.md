@@ -45,4 +45,5 @@ npm install
 npm run dev
 ```
 5. Access the application:
+   
     - Open a web browser and navigate to `http://localhost:3000` to access the application.
