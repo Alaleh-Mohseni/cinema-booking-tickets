@@ -47,3 +47,72 @@ npm run dev
 5. Access the application:
    
     - Open a web browser and navigate to `http://localhost:5173` to access the application.
+
+### Preview
+
+<table width="100%">
+  <thead>
+    <tr>
+      <th width="50%">Home Page</th>
+      <th width="50%">Profile</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td width="50%"><img src="/src/assets/screenshots/home.png"/></td>
+      <td width="50%"><img src="/src/assets/screenshots/profile-dropdown.png"/></td>
+    </tr>
+  </tbody>
+    <thead>
+    <tr>
+      <th width="50%">Register</th>
+      <th width="50%">Login with phone number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td width="50%"><img src="/src/assets/screenshots/create-account.png"/></td>
+      <td width="50%"><img src="/src/assets/screenshots/login-phoneNumber.png"/></td>
+    </tr>
+  </tbody>
+    <thead>
+    <tr>
+      <th width="50%">Login with password</th>
+      <th width="50%">Forget password</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td width="50%"><img src="/src/assets/screenshots/login-password.png"/></td>
+      <td width="50%"><img src="/src/assets/screenshots/forget-password.png"/></td>
+    </tr>
+  </tbody>
+  <thead>
+    <tr>
+      <th width="33.33%">Complete profile</th>
+      <th width="33.33%">Set password</th>
+      <th width="33.33%">Change password</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td width="33.33%"><img src="/src/assets/screenshots/complete-profile.png"/></td>
+      <td width="33.33%"><img src="/src/assets/screenshots/password.png"/></td>
+      <td width="33.33%"><img src="/src/assets/screenshots/change-password.png"/></td>
+    </tr>
+  </tbody>
+    <thead>
+    <tr>
+      <th width="33.33%">Cart</th>
+      <th width="33.33%">Wallet</th>
+      <th width="33.33%">Logout</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td width="33.33%"><img src="/src/assets/screenshots/cart.png"/></td>
+      <td width="33.33%"><img src="/src/assets/screenshots/wallet.png"/></td>
+      <td width="33.33%"><img src="/src/assets/screenshots/logout.png"/></td>
+    </tr>
+  </tbody>
+</table>
